@@ -9,5 +9,5 @@
 import Foundation
 
 public protocol GeneticFitnessFunction {
-    func evaluate(chromosome: GeneticChromosome)
+    func evaluate(chromosome: GeneticChromosome) -> Double
 }

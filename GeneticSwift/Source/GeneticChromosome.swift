@@ -9,8 +9,7 @@
 import Foundation
 
 public protocol GeneticChromosome {
-    var fitness: Double { get set }
-    mutating func evaluate(finessFunction: GeneticFitnessFunction)
+    func fitness(with fitnessFunction: GeneticFitnessFunction) -> Double
     
     func crossover(with chromosome: GeneticChromosome) -> GeneticChromosome
     func mutate() -> GeneticChromosome
