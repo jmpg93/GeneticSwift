@@ -26,8 +26,6 @@ public protocol GeneticPopulation {
     mutating func crossover()
     mutating func mutate()
     mutating func select()
-    
-    mutating func evaluate()
 }
 
 

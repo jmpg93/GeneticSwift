@@ -27,10 +27,10 @@ public class Population : GeneticPopulation {
         
         self.ancestor = ancestor
         self.best = ancestor
+        self.maxFitness = fitnessFunction.evaluate(chromosome: ancestor)
         
         self.chromosomes = []
-        self.maxFitness = 0
-        
+
         create()
     }
     
@@ -60,20 +60,13 @@ public class Population : GeneticPopulation {
     
     public func select() {
         let outcome = selectionMethod.select(population: self)
+        best = outcome.best
+        maxFitness = outcome.maxFitness
+        
         chromosomes = outcome.selected
         
         for _ in outcome.discared {
             chromosomes.append(ancestor.new())
-        }
-    }
-
-    public func evaluate()  {
-        chromosomes.forEach { chromosome in
-            let chromosomeFitness = fitnessFunction.evaluate(chromosome: chromosome)
-            if chromosomeFitness > maxFitness {
-                maxFitness = chromosomeFitness
-                best = chromosome
-            }
         }
     }
     
@@ -84,7 +77,6 @@ public class Population : GeneticPopulation {
         for _ in 0...size {
             chromosomes.append(ancestor.new())
         }
-        evaluate()
     }
     
     var random: Double {
