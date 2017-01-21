@@ -1,5 +1,5 @@
 //
-//  GeneticSelectionMethod.swift
+//  ElitistSelectionMethod.swift
 //  GeneticSwift
 //
 //  Created by Jose Maria Puerta on 21/1/17.
@@ -8,19 +8,8 @@
 
 import Foundation
 
-public typealias SelectionOutcome = (
-    selected: [GeneticChromosome],
-    discared: [GeneticChromosome],
-    best: GeneticChromosome,
-    maxFitness: Double
-)
-
-public protocol GeneticSelectionMethod {
-    func select(population: GeneticPopulation) -> SelectionOutcome
-}
-
-public extension GeneticSelectionMethod {
-    func select(population: GeneticPopulation) -> SelectionOutcome {
+public struct ElitistSelectionMethod : GeneticSelectionMethod {
+    public func select(population: GeneticPopulation) -> SelectionOutcome {
         var maxFitness: Double = 0
         var best = population.best
         
@@ -32,6 +21,7 @@ public extension GeneticSelectionMethod {
             }
         }
         
+        //TODO: Select
         return (selected: [], discared: [], best: best, maxFitness: maxFitness)
     }
 }

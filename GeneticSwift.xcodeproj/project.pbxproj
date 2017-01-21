@@ -8,24 +8,26 @@
 
 /* Begin PBXBuildFile section */
 		6C5830591E32EA2B0041AB22 /* GeneticSwift.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C5830571E32EA2B0041AB22 /* GeneticSwift.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6C615E2C1E33F5BE00975A93 /* ElitistSelectionMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C615E2B1E33F5BE00975A93 /* ElitistSelectionMethod.swift */; };
 		6CC538EA1E33B94B00508318 /* GeneticChromosome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CC538E91E33B94B00508318 /* GeneticChromosome.swift */; };
 		6CC538EC1E33C59300508318 /* GeneticPopulationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CC538EB1E33C59300508318 /* GeneticPopulationManager.swift */; };
 		6CC538EE1E33C6C300508318 /* GeneticFitnessFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CC538ED1E33C6C300508318 /* GeneticFitnessFunction.swift */; };
 		6CC538F11E33CB5F00508318 /* GeneticSelectionMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CC538F01E33CB5F00508318 /* GeneticSelectionMethod.swift */; };
-		6CC538F41E33CE3A00508318 /* Chromosome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CC538F31E33CE3A00508318 /* Chromosome.swift */; };
-		6CC538F61E33CE8E00508318 /* Population.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CC538F51E33CE8E00508318 /* Population.swift */; };
+		6CC538F41E33CE3A00508318 /* Population.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CC538F31E33CE3A00508318 /* Population.swift */; };
+		6CC538F61E33CE8E00508318 /* Chromosome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CC538F51E33CE8E00508318 /* Chromosome.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		6C5830541E32EA2B0041AB22 /* GeneticSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GeneticSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C5830571E32EA2B0041AB22 /* GeneticSwift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GeneticSwift.h; sourceTree = "<group>"; };
 		6C5830581E32EA2B0041AB22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6C615E2B1E33F5BE00975A93 /* ElitistSelectionMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ElitistSelectionMethod.swift; path = Source/ElitistSelectionMethod.swift; sourceTree = "<group>"; };
 		6CC538E91E33B94B00508318 /* GeneticChromosome.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GeneticChromosome.swift; path = Source/GeneticChromosome.swift; sourceTree = "<group>"; };
 		6CC538EB1E33C59300508318 /* GeneticPopulationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GeneticPopulationManager.swift; path = Source/GeneticPopulationManager.swift; sourceTree = "<group>"; };
 		6CC538ED1E33C6C300508318 /* GeneticFitnessFunction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GeneticFitnessFunction.swift; path = Source/GeneticFitnessFunction.swift; sourceTree = "<group>"; };
-		6CC538F01E33CB5F00508318 /* GeneticSelectionMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneticSelectionMethod.swift; sourceTree = "<group>"; };
-		6CC538F31E33CE3A00508318 /* Chromosome.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chromosome.swift; sourceTree = "<group>"; };
-		6CC538F51E33CE8E00508318 /* Population.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Population.swift; sourceTree = "<group>"; };
+		6CC538F01E33CB5F00508318 /* GeneticSelectionMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GeneticSelectionMethod.swift; path = Source/GeneticSelectionMethod.swift; sourceTree = "<group>"; };
+		6CC538F31E33CE3A00508318 /* Population.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Population.swift; path = Source/Population.swift; sourceTree = "<group>"; };
+		6CC538F51E33CE8E00508318 /* Chromosome.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Chromosome.swift; path = Source/Chromosome.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,11 +60,21 @@
 		6C5830561E32EA2B0041AB22 /* GeneticSwift */ = {
 			isa = PBXGroup;
 			children = (
-				6CC538F21E33CE2500508318 /* Imp */,
+				6CC538F31E33CE3A00508318 /* Population.swift */,
+				6CC538F51E33CE8E00508318 /* Chromosome.swift */,
+				6C615E2A1E33F5A200975A93 /* SelectionMethod */,
 				6CC538E71E33B90B00508318 /* Protocols */,
 				6CC538E21E33B8BA00508318 /* Domain */,
 			);
 			path = GeneticSwift;
+			sourceTree = "<group>";
+		};
+		6C615E2A1E33F5A200975A93 /* SelectionMethod */ = {
+			isa = PBXGroup;
+			children = (
+				6C615E2B1E33F5BE00975A93 /* ElitistSelectionMethod.swift */,
+			);
+			name = SelectionMethod;
 			sourceTree = "<group>";
 		};
 		6CC538E21E33B8BA00508318 /* Domain */ = {
@@ -83,15 +95,6 @@
 				6CC538F01E33CB5F00508318 /* GeneticSelectionMethod.swift */,
 			);
 			name = Protocols;
-			sourceTree = "<group>";
-		};
-		6CC538F21E33CE2500508318 /* Imp */ = {
-			isa = PBXGroup;
-			children = (
-				6CC538F31E33CE3A00508318 /* Chromosome.swift */,
-				6CC538F51E33CE8E00508318 /* Population.swift */,
-			);
-			name = Imp;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -175,9 +178,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6CC538F61E33CE8E00508318 /* Population.swift in Sources */,
+				6CC538F61E33CE8E00508318 /* Chromosome.swift in Sources */,
 				6CC538F11E33CB5F00508318 /* GeneticSelectionMethod.swift in Sources */,
-				6CC538F41E33CE3A00508318 /* Chromosome.swift in Sources */,
+				6C615E2C1E33F5BE00975A93 /* ElitistSelectionMethod.swift in Sources */,
+				6CC538F41E33CE3A00508318 /* Population.swift in Sources */,
 				6CC538EE1E33C6C300508318 /* GeneticFitnessFunction.swift in Sources */,
 				6CC538EA1E33B94B00508318 /* GeneticChromosome.swift in Sources */,
 				6CC538EC1E33C59300508318 /* GeneticPopulationManager.swift in Sources */,

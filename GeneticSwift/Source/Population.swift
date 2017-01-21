@@ -37,6 +37,7 @@ public class Population : GeneticPopulation {
     public func nextGeneration() {
         mutate()
         crossover()
+        select()
     }
     
     public func mutate() {
