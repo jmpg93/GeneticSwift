@@ -10,13 +10,19 @@ import Foundation
 
 public class Population : GeneticPopulation {
 
+    //TODO: Data soutce?
     public let size: Int
     public let fitnessFunction: GeneticFitnessFunction
     public let selectionMethod: GeneticSelectionMethod
     
+    public var delegate: GeneticPopulationDelegate? = nil
+    
     public private(set) var ancestor: GeneticChromosome
     public private(set) var best: GeneticChromosome
-    public private(set) var maxFitness: Double
+    public private(set) var maxFitness: Double?
+    
+    public private(set) var phase: EvolutionPhase
+    public private(set) var generation: Int
     
     public private(set) var chromosomes: [GeneticChromosome]
     
@@ -27,20 +33,33 @@ public class Population : GeneticPopulation {
         
         self.ancestor = ancestor
         self.best = ancestor
-        self.maxFitness = fitnessFunction.evaluate(chromosome: ancestor)
+        self.maxFitness = nil
+        
+        generation = 0
+        phase = .none
         
         self.chromosomes = []
-
-        create()
     }
     
-    public func nextGeneration() {
+    public func stop() {
+        
+    }
+    
+    public func pause() {
+
+    }
+    
+    public func next() {
+        randomize()
         mutate()
         crossover()
-        select()
+        evaluate()
+        
     }
     
     public func mutate() {
+        phase = .mutation
+        
         for (index, chromosome) in chromosomes.enumerated() where index < size {
             if random <= crossoverRate {
                 chromosomes += [chromosome.mutate()]
@@ -49,6 +68,8 @@ public class Population : GeneticPopulation {
     }
     
     public func crossover() {
+        phase = .crossover
+        
         for (index, chromosome) in chromosomes.enumerated() where index < size {
             if random <= mutationRate && index >= 1 {
                 let c1 = chromosome.crossover(with: chromosomes[index-1])
@@ -60,22 +81,28 @@ public class Population : GeneticPopulation {
     }
     
     public func select() {
+        phase = .selection
+        
         let outcome = selectionMethod.select(population: self)
-        best = outcome.best
-        maxFitness = outcome.maxFitness
-        
         chromosomes = outcome.selected
+    }
+    
+    public func evaluate() {
+        phase = .evaluation
         
-        for _ in outcome.discared {
-            chromosomes.append(ancestor.new())
+        chromosomes.forEach { chromosome in
+            let chromosomeFitness = 0.0//fitnessFunction.evaluate(chromosome: chromosome)
+            if chromosomeFitness > maxFitness! {
+            }
         }
     }
     
-    // Private function
-    private func create() {
-        chromosomes = []
+    public func randomize() {
+        phase = .randomize
         
-        for _ in 0...size {
+        let emptySlots = size - chromosomes.count
+        
+        for index in 0...emptySlots where index > 0 {
             chromosomes.append(ancestor.new())
         }
     }

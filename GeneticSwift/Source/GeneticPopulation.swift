@@ -19,6 +19,8 @@ public protocol GeneticPopulation {
     var fitnessFunction: GeneticFitnessFunction { get }
     var selectionMethod: GeneticSelectionMethod { get }
     
+    var delegate: GeneticPopulationDelegate? { get set }
+    
     var crossoverRate: Double { get }
     var mutationRate: Double { get }
     var selectionRage: Double { get }

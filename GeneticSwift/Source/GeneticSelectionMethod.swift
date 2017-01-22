@@ -10,9 +10,7 @@ import Foundation
 
 public typealias SelectionOutcome = (
     selected: [GeneticChromosome],
-    discared: [GeneticChromosome],
-    best: GeneticChromosome,
-    maxFitness: Double
+    discared: [GeneticChromosome]
 )
 
 public protocol GeneticSelectionMethod {

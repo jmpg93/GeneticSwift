@@ -9,11 +9,12 @@
 import Foundation
 
 public struct Chromosome : GeneticChromosome {
+    
+    public var fitness: Double?
+
     public func fitness(with fitnessFunction: GeneticFitnessFunction) -> Double {
         return fitnessFunction.evaluate(chromosome: self)
     }
-
-    public var fitness: Double = 0
 
     mutating public func evaluate(finessFunction: GeneticFitnessFunction) {
         fitness = 10
