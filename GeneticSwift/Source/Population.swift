@@ -8,24 +8,24 @@
 
 import Foundation
 
-public class Population : GeneticPopulation, GeneticPopulationDelegate {
+open  class Population : GeneticPopulation, GeneticPopulationDelegate {
 
-    public let size: Int
-    public let fitnessFunction: GeneticFitnessFunction
-    public let selectionMethod: GeneticSelectionMethod
+    open let size: Int
+    open let fitnessFunction: GeneticFitnessFunction
+    open let selectionMethod: GeneticSelectionMethod
     
-    public weak var delegate: GeneticPopulationDelegate? = nil
-    public weak var dataSource: GeneticPopulationDataSource? = nil
+    open weak var delegate: GeneticPopulationDelegate? = nil
+    open weak var dataSource: GeneticPopulationDataSource? = nil
     
-    public private(set) var ancestor: GeneticChromosome
-    public private(set) var best: GeneticChromosome
+    open private(set) var ancestor: GeneticChromosome
+    open private(set) var best: GeneticChromosome
     
-    public private(set) var phase: EvolutionPhase
-    public private(set) var generation: Int
+    open private(set) var phase: EvolutionPhase
+    open private(set) var generation: Int
     
-    public private(set) var chromosomes: [GeneticChromosome]
+    open private(set) var chromosomes: [GeneticChromosome]
     
-    public init(ancestor: GeneticChromosome, size: Int, fitnessFunction: GeneticFitnessFunction, selectionMethod: GeneticSelectionMethod) {
+    init(ancestor: GeneticChromosome, size: Int, fitnessFunction: GeneticFitnessFunction, selectionMethod: GeneticSelectionMethod) {
         self.size = size
         self.fitnessFunction = fitnessFunction
         self.selectionMethod = selectionMethod
@@ -41,11 +41,11 @@ public class Population : GeneticPopulation, GeneticPopulationDelegate {
         self.chromosomes = []
     }
     
-    public func start() {
+    open  func start() {
         start(phase: .randomize)
     }
     
-    public func randomize() {
+    open  func randomize() {
         
         let emptySlots = size - chromosomes.count
         
@@ -59,7 +59,7 @@ public class Population : GeneticPopulation, GeneticPopulationDelegate {
         startNextPhase()
     }
     
-    public func mutate() {
+    open  func mutate() {
         
         for (index, chromosome) in chromosomes.enumerated() where index < size {
             if random <= crossoverRate {
@@ -73,7 +73,7 @@ public class Population : GeneticPopulation, GeneticPopulationDelegate {
         startNextPhase()
     }
     
-    public func crossover() {
+    open  func crossover() {
         
         for (index, chromosome) in chromosomes.enumerated() where index < size {
             if random <= mutationRate && index >= 1 {
@@ -89,14 +89,14 @@ public class Population : GeneticPopulation, GeneticPopulationDelegate {
         startNextPhase()
     }
     
-    public func select() {
+    open  func select() {
         let outcome = selectionMethod.select(population: self)
         chromosomes = outcome.selected
         
         startNextPhase()
     }
     
-    public func evaluate() {
+    open  func evaluate() {
         for chromosome in chromosomes {
             if chromosome.fitness > best.fitness {
                 best = chromosome
@@ -106,7 +106,7 @@ public class Population : GeneticPopulation, GeneticPopulationDelegate {
         startNextPhase()
     }
     
-    public func end() {
+    open  func end() {
         if let delegate = delegate, !delegate.populationShouldStartNextGeneration(population: self) {
             return
         } else if !populationShouldStartNextGeneration(population: self) {
