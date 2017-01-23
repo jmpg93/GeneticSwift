@@ -41,11 +41,11 @@ open class Population : GeneticPopulation, GeneticPopulationDelegate {
         self.chromosomes = []
     }
     
-    open  func start() {
+    open func start() {
         start(phase: .randomize)
     }
     
-    open  func randomize() {
+    open func randomize() {
         
         let emptySlots = size - chromosomes.count
         
@@ -59,7 +59,7 @@ open class Population : GeneticPopulation, GeneticPopulationDelegate {
         startNextPhase()
     }
     
-    open  func mutate() {
+    open func mutate() {
         
         for (index, chromosome) in chromosomes.enumerated() where index < size {
             if random <= crossoverRate {
@@ -73,7 +73,7 @@ open class Population : GeneticPopulation, GeneticPopulationDelegate {
         startNextPhase()
     }
     
-    open  func crossover() {
+    open func crossover() {
         
         for (index, chromosome) in chromosomes.enumerated() where index < size {
             if random <= mutationRate && index >= 1 {
@@ -89,14 +89,17 @@ open class Population : GeneticPopulation, GeneticPopulationDelegate {
         startNextPhase()
     }
     
-    open  func select() {
+    open func select() {
+        
         let outcome = selectionMethod.select(population: self)
         chromosomes = outcome.selected
         
         startNextPhase()
     }
     
-    open  func evaluate() {
+    open func evaluate() {
+        
+        // If function is async => Wait for all operations to end => Then start evaluation
         for chromosome in chromosomes {
             if chromosome.fitness > best.fitness {
                 best = chromosome
@@ -106,7 +109,8 @@ open class Population : GeneticPopulation, GeneticPopulationDelegate {
         startNextPhase()
     }
     
-    open  func end() {
+    open func end() {
+        
         if let delegate = delegate, !delegate.populationShouldStartNextGeneration(population: self) {
             return
         } else if !populationShouldStartNextGeneration(population: self) {
@@ -143,7 +147,7 @@ open class Population : GeneticPopulation, GeneticPopulationDelegate {
         }
     }
     
-    var random: Double {
+    private var random: Double {
         return drand48()
     }
 }

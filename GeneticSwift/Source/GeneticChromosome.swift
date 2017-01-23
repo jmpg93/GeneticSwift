@@ -20,6 +20,7 @@ public protocol GeneticChromosome : class {
 
 public extension GeneticChromosome {
     public func evaluate(with fitnessFunction: GeneticFitnessFunction) {
+        // If function is async => Create operation and return.
         fitness = fitnessFunction.evaluate(chromosome: self)
     }
 }
