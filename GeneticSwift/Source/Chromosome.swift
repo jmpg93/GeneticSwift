@@ -8,24 +8,24 @@
 
 import Foundation
 
-public class Chromosome<T: Randomizable> : GeneticChromosome {
+open class Chromosome<T: Randomizable> : GeneticChromosome, CustomStringConvertible {
     
-    public var fitness: Double
-    public var values: [T] = []
+    open var fitness: Double
+    open var values: [T] = []
     
-    private let generator: GeneticChromosomeGenerator<T>
+    private let generator: ChromosomeGenerator<T>
     
     private var randomIndex: Int {
-        return Int.random(0, values.count)
+        return Int.random(0, values.count - 1)
     }
     
-    public init(values: [T], generator: GeneticChromosomeGenerator<T>, defaultFitness: Double = 0) {
+    public init(values: [T], generator: ChromosomeGenerator<T>, defaultFitness: Double = 0) {
         self.values = values
         self.generator = generator
         self.fitness = defaultFitness
     }
     
-    public func crossover(with chromosome: GeneticChromosome) -> (c1: GeneticChromosome, c2: GeneticChromosome)  {
+    open func crossover(with chromosome: GeneticChromosome) -> (c1: GeneticChromosome, c2: GeneticChromosome)  {
         guard let chromosome = chromosome as? Chromosome<T>, chromosome.values.count == values.count else {
             fatalError()
         }
@@ -57,7 +57,7 @@ public class Chromosome<T: Randomizable> : GeneticChromosome {
                 Chromosome<T>(values: values2, generator: generator))
     }
     
-    public func mutate() -> GeneticChromosome {
+    open func mutate() -> GeneticChromosome {
         let mutationIndex = randomIndex
         var mutatedValues = values
         
@@ -70,8 +70,12 @@ public class Chromosome<T: Randomizable> : GeneticChromosome {
         return Chromosome<T>(values: mutatedValues, generator: generator)
     }
     
-    public func new() -> GeneticChromosome {
+    open func new() -> GeneticChromosome {
         let newValues = values.map({ _ in generator.newValue })
         return Chromosome<T>(values: newValues, generator: generator)
+    }
+    
+    public var description: String {
+        return "Chromosome with \(values.count) values and \(fitness) fitness"
     }
 }

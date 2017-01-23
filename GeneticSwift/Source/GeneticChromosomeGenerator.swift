@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct GeneticChromosomeGenerator<T: Randomizable> {
+public struct ChromosomeGenerator<T: Randomizable> {
     let valueGenerator: GeneticRandomGenerator<T>
     let additionGenerator: GeneticRandomGenerator<T>
     let multiplierGenerator: GeneticRandomGenerator<T>
@@ -24,8 +24,7 @@ public struct GeneticChromosomeGenerator<T: Randomizable> {
     }
 
     public var randomFactor: T {
-        //TODO: Set this up
-        fatalError()
+        return T.randomFactor
     }
     
     public var newValue: T {
@@ -50,5 +49,13 @@ public struct GeneticChromosomeGenerator<T: Randomizable> {
     
     public var crossoverBalancer: Double {
         return 0.5
+    }
+}
+
+public extension ChromosomeGenerator where T: Comparable & Equatable {
+    public init(valueRange: Range<T>, multiplierRange: Range<T>, additionRange: Range<T>) {
+        self.valueGenerator = GeneticRandomGenerator<T>(lower: valueRange.lowerBound, upper: valueRange.upperBound)
+        self.additionGenerator = GeneticRandomGenerator<T>(lower: additionRange.lowerBound, upper: additionRange.upperBound)
+        self.multiplierGenerator = GeneticRandomGenerator<T>(lower: multiplierRange.lowerBound, upper: multiplierRange.upperBound)
     }
 }

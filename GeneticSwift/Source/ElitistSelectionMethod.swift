@@ -8,10 +8,10 @@
 
 import Foundation
 
-public struct ElitistSelectionMethod : GeneticSelectionMethod {
+public struct ElitistSelectionMethod : GeneticSelectionMethod, CustomStringConvertible {
     public let selectNumber: Int
     
-    init(selectNumber: Int) {
+    public init(selectNumber: Int) {
         self.selectNumber = selectNumber
     }
     
@@ -20,5 +20,9 @@ public struct ElitistSelectionMethod : GeneticSelectionMethod {
         let slices = chromosomes.chunk(withDistance: selectNumber)
         
         return (selected: slices[0], discared: slices[1])
+    }
+    
+    public var description: String {
+        return "Elitist selection method with a cut of \(selectNumber) chromosomes"
     }
 }

@@ -17,14 +17,6 @@ public class Population : GeneticPopulation, GeneticPopulationDelegate {
     public weak var delegate: GeneticPopulationDelegate? = nil
     public weak var dataSource: GeneticPopulationDataSource? = nil
     
-    private var _delegate: GeneticPopulationDelegate {
-        return delegate ?? self
-    }
-    
-    private var _dataSource: GeneticPopulationDelegate {
-        return delegate ?? self
-    }
-    
     public private(set) var ancestor: GeneticChromosome
     public private(set) var best: GeneticChromosome
     
@@ -154,5 +146,4 @@ public class Population : GeneticPopulation, GeneticPopulationDelegate {
     var random: Double {
         return drand48()
     }
-    
 }

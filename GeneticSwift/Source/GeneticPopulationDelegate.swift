@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 public protocol GeneticPopulationDelegate : class {
     func populationDidEndPhase(phase: EvolutionPhase, population: GeneticPopulation)
     func populationShouldStartNextGeneration(popuplation: GeneticPopulation) -> Bool

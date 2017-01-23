@@ -11,7 +11,7 @@ public typealias EvaluationClosure = (_ chromosome: GeneticChromosome) -> Double
 
 public struct BaseFitnessFunction: GeneticFitnessFunction {
     let evaluateClosure: EvaluationClosure
-    init(_ evaluateClosure: @escaping EvaluationClosure) {
+    public init(_ evaluateClosure: @escaping EvaluationClosure) {
         self.evaluateClosure = evaluateClosure
     }
     

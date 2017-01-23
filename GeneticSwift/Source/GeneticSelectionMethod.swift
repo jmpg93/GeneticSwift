@@ -8,10 +8,7 @@
 
 import Foundation
 
-public typealias SelectionOutcome = (
-    selected: [GeneticChromosome],
-    discared: [GeneticChromosome]
-)
+public typealias SelectionOutcome = (selected: [GeneticChromosome], discared: [GeneticChromosome])
 
 public protocol GeneticSelectionMethod {
     func select(population: GeneticPopulation) -> SelectionOutcome

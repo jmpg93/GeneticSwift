@@ -8,7 +8,7 @@
 
 import Foundation
 
-public enum EvolutionPhase {
+public enum EvolutionPhase : CustomStringConvertible {
     case randomize
     case crossover
     case mutation
@@ -33,6 +33,25 @@ public enum EvolutionPhase {
             return .none
         case .none:
             return .none
+        }
+    }
+    
+    public var description: String {
+                switch self {
+        case .randomize:
+            return "Randomize"
+        case .crossover:
+            return "Crossover"
+        case .mutation:
+            return "Mutation"
+        case .evaluation:
+            return "Evaluation"
+        case .selection:
+            return "Selection"
+        case .end:
+            return "End"
+        case .none:
+            return "None"
         }
     }
 }

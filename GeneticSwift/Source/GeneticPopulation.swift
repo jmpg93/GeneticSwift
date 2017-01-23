@@ -8,11 +8,13 @@
 
 import Foundation
 
-public protocol GeneticPopulation {
+public protocol GeneticPopulation : CustomStringConvertible {
     
     var ancestor: GeneticChromosome { get }
     var best: GeneticChromosome { get }
-   
+    var generation: Int { get }
+    var phase: EvolutionPhase { get }
+    
     var chromosomes: [GeneticChromosome] { get }
     
     //TODO: Decide.
@@ -45,5 +47,9 @@ public extension GeneticPopulation {
     
     public var selectionRage: Double {
         return 0
+    }
+    
+    public var description: String {
+        return "Population with \(chromosomes.count) chromosomes in the \(phase) phase on generation \(generation). Current max fitness: \(best.fitness)"
     }
 }
