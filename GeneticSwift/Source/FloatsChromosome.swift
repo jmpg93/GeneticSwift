@@ -16,8 +16,8 @@ open class FloatsChromosome : Chromosome<Float> {
                 defaultFitness: Double = 0) {
         
         let chromosomeGenerator = ChromosomeGenerator<Float>(valueRange: valuesRange,
-                                                              multiplierRange: multiplierRange,
-                                                              additionRange: additionRange)
+                                                             multiplierRange: multiplierRange,
+                                                             additionRange: additionRange)
         
         super.init(values: values, generator: chromosomeGenerator, defaultFitness: defaultFitness)
     }

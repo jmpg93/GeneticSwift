@@ -16,8 +16,8 @@ open class IntsChromosome : Chromosome<Int> {
                 defaultFitness: Double = 0) {
         
         let chromosomeGenerator = ChromosomeGenerator<Int>(valueRange: valuesRange,
-                                                             multiplierRange: multiplierRange,
-                                                             additionRange: additionRange)
+                                                           multiplierRange: multiplierRange,
+                                                           additionRange: additionRange)
         
         super.init(values: values, generator: chromosomeGenerator, defaultFitness: defaultFitness)
     }

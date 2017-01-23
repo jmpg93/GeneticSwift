@@ -37,7 +37,7 @@ public enum EvolutionPhase : CustomStringConvertible {
     }
     
     public var description: String {
-                switch self {
+        switch self {
         case .randomize:
             return "Randomize"
         case .crossover:

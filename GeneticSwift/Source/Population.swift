@@ -9,7 +9,7 @@
 import Foundation
 
 open class Population : GeneticPopulation, GeneticPopulationDelegate {
-
+    
     open let size: Int
     open let fitnessFunction: GeneticFitnessFunction
     open let selectionMethod: GeneticSelectionMethod
@@ -34,7 +34,7 @@ open class Population : GeneticPopulation, GeneticPopulationDelegate {
         
         self.ancestor = ancestor
         self.best = ancestor
-
+        
         self.generation = 0
         self.phase = .none
         
