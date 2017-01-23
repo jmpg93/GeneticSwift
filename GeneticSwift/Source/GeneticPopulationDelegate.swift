@@ -10,21 +10,12 @@ import Foundation
 
 
 public protocol GeneticPopulationDelegate {
-    func populationDidEndRandomize(popuplation: GeneticPopulation)
-    func populationDidEndMutation(popuplation: GeneticPopulation)
-    func populationDidEndCrossover(popuplation: GeneticPopulation)
-    func populationDidEndEvaluation(popuplation: GeneticPopulation)
-    func populationDidEndSelection(popuplation: GeneticPopulation)
-    
+    func populationDidEndPhase(phase: EvolutionPhase, population: GeneticPopulation)
     func populationShouldStartNextGeneration(popuplation: GeneticPopulation) -> Bool
 }
 
 public extension GeneticPopulationDelegate {
-    public func populationDidEndRandomize(popuplation: GeneticPopulation) { }
-    public func populationDidEndMutation(popuplation: GeneticPopulation) { }
-    public func populationDidEndCrossover(popuplation: GeneticPopulation) { }
-    public func populationDidEndEvaluation(popuplation: GeneticPopulation) { }
-    public func populationDidEndSelection(popuplation: GeneticPopulation) { }
+    func populationDidEndPhase(phase: EvolutionPhase, population: GeneticPopulation) { }
     
     public func populationShouldStartNextGeneration(popuplation: GeneticPopulation) -> Bool {
         return true

@@ -14,5 +14,25 @@ public enum EvolutionPhase {
     case mutation
     case evaluation
     case selection
+    case end
     case none
+    
+    public var next: EvolutionPhase {
+        switch self {
+        case .randomize:
+            return .crossover
+        case .crossover:
+            return .mutation
+        case .mutation:
+            return .evaluation
+        case .evaluation:
+            return .selection
+        case .selection:
+            return .end
+        case .end:
+            return .none
+        case .none:
+            return .none
+        }
+    }
 }

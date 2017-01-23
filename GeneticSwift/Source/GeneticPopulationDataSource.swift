@@ -9,7 +9,7 @@
 import Foundation
 
 public protocol GeneticPopulationDataSource {
-    func sizeForPopulation(ancestor: Chromosome) -> Int
-    func fitnessFunction(ancestor: Chromosome) -> GeneticFitnessFunction
-    func selectionMethod(ancestor: Chromosome) -> GeneticSelectionMethod
+    func size(for population: GeneticPopulation) -> Int
+    func fitnessFunction(for population: GeneticPopulation) -> GeneticFitnessFunction
+    func selectionMethod(for population: GeneticPopulation) -> GeneticSelectionMethod
 }

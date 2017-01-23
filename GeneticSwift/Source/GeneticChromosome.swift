@@ -8,11 +8,18 @@
 
 import Foundation
 
-public protocol GeneticChromosome {
-    var fitness: Double? { get set }
-    func fitness(with fitnessFunction: GeneticFitnessFunction) -> Double
+public protocol GeneticChromosome : class {
+    var fitness: Double { get set }
     
-    func crossover(with chromosome: GeneticChromosome) -> GeneticChromosome
+    func evaluate(with fitnessFunction: GeneticFitnessFunction)
+    
+    func crossover(with chromosome: GeneticChromosome) -> (c1: GeneticChromosome, c2: GeneticChromosome)
     func mutate() -> GeneticChromosome
     func new() -> GeneticChromosome
+}
+
+public extension GeneticChromosome {
+    public func evaluate(with fitnessFunction: GeneticFitnessFunction) {
+        fitness = fitnessFunction.evaluate(chromosome: self)
+    }
 }
