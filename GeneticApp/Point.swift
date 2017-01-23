@@ -15,10 +15,10 @@ public struct Point: CustomStringConvertible {
         return "(\(x), \(y))"
     }
     
-    public let x: Double
-    public let y: Double
+    public let x: Int
+    public let y: Int
     
-    public init(_ x: Double, _ y: Double) {
+    public init(_ x: Int, _ y: Int) {
         self.x = x
         self.y = y
     }
@@ -26,8 +26,8 @@ public struct Point: CustomStringConvertible {
 
 extension Point : Randomizable {
     public static func random(_ lower: Point, _ upper: Point) -> Point {
-        let x = Double.random(lower.x, upper.x)
-        let y = Double.random(lower.y, upper.y)
+        let x = Int.random(lower.x, upper.x)
+        let y = Int.random(lower.y, upper.y)
         
         return Point(x, y)
     }
@@ -46,8 +46,8 @@ extension Point : Randomizable {
     
     
     public static var randomFactor: Point {
-        let x = Double.random(0, 1)
-        let y = Double.random(0, 1)
+        let x = Int.random(0, 1)
+        let y = Int.random(0, 1)
         
         return Point(x, y)
     }
@@ -57,7 +57,7 @@ open class PointsChromosome : Chromosome<Point> {
     public init(values: [Point]) {
         let vg =  RandomGenerator<Point>(lower: Point(0, 0), upper: Point(30, 30))
         let mg =  RandomGenerator<Point>(lower: Point(0, 0), upper: Point(2, 2))
-        let ag =  RandomGenerator<Point>(lower: Point(0, 0), upper: Point(0.5, 0.5))
+        let ag =  RandomGenerator<Point>(lower: Point(0, 0), upper: Point(1, 1))
         
         let chromosomeGenerator = ChromosomeGenerator<Point>(valueGenerator: vg,
                                                              multiplierGenerator: mg,

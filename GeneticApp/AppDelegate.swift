@@ -42,7 +42,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             var fitness: Double = 5000
             
             for value in chromosome.values {
-                if value.x < 0.9 || value.y < 0.9 {
+                if value.x < 1 || value.y < 1 {
                     fitness -= 1000
                     continue
                 }
@@ -57,7 +57,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 print("Y should be: \(shouldBe), and it is \(itIs)")
                 print("Delta: \(delta)")
                 
-                fitness -= abs(delta)
+                fitness -= Double(abs(delta))
             }
             
             return fitness

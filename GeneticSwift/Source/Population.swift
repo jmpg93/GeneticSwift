@@ -8,7 +8,7 @@
 
 import Foundation
 
-open  class Population : GeneticPopulation, GeneticPopulationDelegate {
+open class Population : GeneticPopulation, GeneticPopulationDelegate {
 
     open let size: Int
     open let fitnessFunction: GeneticFitnessFunction
@@ -25,7 +25,7 @@ open  class Population : GeneticPopulation, GeneticPopulationDelegate {
     
     open private(set) var chromosomes: [GeneticChromosome]
     
-    init(ancestor: GeneticChromosome, size: Int, fitnessFunction: GeneticFitnessFunction, selectionMethod: GeneticSelectionMethod) {
+    public init(ancestor: GeneticChromosome, size: Int, fitnessFunction: GeneticFitnessFunction, selectionMethod: GeneticSelectionMethod) {
         self.size = size
         self.fitnessFunction = fitnessFunction
         self.selectionMethod = selectionMethod
