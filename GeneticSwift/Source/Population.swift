@@ -14,7 +14,16 @@ public class Population : GeneticPopulation, GeneticPopulationDelegate {
     public let fitnessFunction: GeneticFitnessFunction
     public let selectionMethod: GeneticSelectionMethod
     
-    public var delegate: GeneticPopulationDelegate? = nil
+    public weak var delegate: GeneticPopulationDelegate? = nil
+    public weak var dataSource: GeneticPopulationDataSource? = nil
+    
+    private var _delegate: GeneticPopulationDelegate {
+        return delegate ?? self
+    }
+    
+    private var _dataSource: GeneticPopulationDelegate {
+        return delegate ?? self
+    }
     
     public private(set) var ancestor: GeneticChromosome
     public private(set) var best: GeneticChromosome

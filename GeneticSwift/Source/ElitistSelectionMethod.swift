@@ -17,8 +17,8 @@ public struct ElitistSelectionMethod : GeneticSelectionMethod {
     
     public func select(population: GeneticPopulation) -> SelectionOutcome {
         let chromosomes = population.chromosomes.sorted { $0.fitness > $1.fitness }
-        let chunks = chromosomes.chunk(withDistance: selectNumber)
+        let slices = chromosomes.chunk(withDistance: selectNumber)
         
-        return (selected: chunks[0], discared: chunks[1])
+        return (selected: slices[0], discared: slices[1])
     }
 }
