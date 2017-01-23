@@ -107,9 +107,9 @@ public class Population : GeneticPopulation, GeneticPopulationDelegate {
     }
     
     public func end() {
-        if let delegate = delegate, !delegate.populationShouldStartNextGeneration(popuplation: self) {
+        if let delegate = delegate, !delegate.populationShouldStartNextGeneration(population: self) {
             return
-        } else if !populationShouldStartNextGeneration(popuplation: self) {
+        } else if !populationShouldStartNextGeneration(population: self) {
             return
         }
         
