@@ -55,9 +55,9 @@ extension Point : Randomizable {
 
 open class PointsChromosome : Chromosome<Point> {
     public init(values: [Point]) {
-        let vg =  GeneticRandomGenerator<Point>(lower: Point(0, 0), upper: Point(30, 30))
-        let mg =  GeneticRandomGenerator<Point>(lower: Point(0, 0), upper: Point(2, 2))
-        let ag =  GeneticRandomGenerator<Point>(lower: Point(0, 0), upper: Point(0.5, 0.5))
+        let vg =  RandomGenerator<Point>(lower: Point(0, 0), upper: Point(30, 30))
+        let mg =  RandomGenerator<Point>(lower: Point(0, 0), upper: Point(2, 2))
+        let ag =  RandomGenerator<Point>(lower: Point(0, 0), upper: Point(0.5, 0.5))
         
         let chromosomeGenerator = ChromosomeGenerator<Point>(valueGenerator: vg,
                                                              multiplierGenerator: mg,

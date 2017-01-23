@@ -1,5 +1,5 @@
 //
-//  GeneticChromosomeGenerator.swift
+//  GeneticChromosomeGenetarot.swift
 //  GeneticSwift
 //
 //  Created by Jose Maria Puerta on 23/1/17.
@@ -8,37 +8,19 @@
 
 import Foundation
 
-public struct ChromosomeGenerator<T: Randomizable> {
-    let valueGenerator: GeneticRandomGenerator<T>
-    let additionGenerator: GeneticRandomGenerator<T>
-    let multiplierGenerator: GeneticRandomGenerator<T>
+public protocol GeneticChromosomeGenerator {
+    associatedtype Randomizable
     
-    public init(valueGenerator: GeneticRandomGenerator<T>, multiplierGenerator: GeneticRandomGenerator<T>, additionGenerator: GeneticRandomGenerator<T>) {
-        self.valueGenerator = valueGenerator
-        self.additionGenerator = additionGenerator
-        self.multiplierGenerator = additionGenerator
-    }
-    
-    public func randomIndex(_ values: [T]) -> Int {
-       return Int.random(0, values.count)
-    }
+    var randomFactor: Randomizable { get }
+    var newValue: Randomizable { get }
+    var newAddition: Randomizable { get }
+    var newMultiplier: Randomizable { get }
+    var newBalance: Double { get }
+    var additionBalancer: Double { get }
+    var crossoverBalancer: Double { get }
+}
 
-    public var randomFactor: T {
-        return T.randomFactor
-    }
-    
-    public var newValue: T {
-        return valueGenerator.random
-    }
-    
-    public var newAddition: T {
-        return additionGenerator.random
-    }
-    
-    public var newMultiplier: T {
-        return multiplierGenerator.random
-    }
-    
+extension GeneticChromosomeGenerator {
     public var newBalance: Double {
         return Double.random(0, 1)
     }
@@ -49,13 +31,5 @@ public struct ChromosomeGenerator<T: Randomizable> {
     
     public var crossoverBalancer: Double {
         return 0.5
-    }
-}
-
-public extension ChromosomeGenerator where T: Comparable & Equatable {
-    public init(valueRange: Range<T>, multiplierRange: Range<T>, additionRange: Range<T>) {
-        self.valueGenerator = GeneticRandomGenerator<T>(lower: valueRange.lowerBound, upper: valueRange.upperBound)
-        self.additionGenerator = GeneticRandomGenerator<T>(lower: additionRange.lowerBound, upper: additionRange.upperBound)
-        self.multiplierGenerator = GeneticRandomGenerator<T>(lower: multiplierRange.lowerBound, upper: multiplierRange.upperBound)
     }
 }

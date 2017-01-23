@@ -1,5 +1,5 @@
 //
-//  GeneticMutationGenerator.swift
+//  GeneticRandomGenerator.swift
 //  GeneticSwift
 //
 //  Created by Jose Maria Puerta on 23/1/17.
@@ -8,16 +8,12 @@
 
 import Foundation
 
-public struct GeneticRandomGenerator<T: Randomizable> {
-    public let lower: T
-    public let upper: T
+public protocol GeneticRandomGenerator {
+    associatedtype Randomizable
     
-    public init(lower: T, upper: T) {
-        self.lower = lower
-        self.upper = upper
-    }
+    var lower: Randomizable { get }
+    var upper: Randomizable { get }
     
-    public var random: T {
-        return T.random(lower, upper)
-    }
+    var random: Randomizable  { get }
 }
+
