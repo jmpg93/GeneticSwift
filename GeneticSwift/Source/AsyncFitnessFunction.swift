@@ -8,14 +8,21 @@
 
 import Foundation
 
+//TODO: Check
 open class AsyncFitnessFunction: GeneticAsyncFitnessFunction {
     
     open let queue: OperationQueue
+    let evaluationClosure: EvaluationClosure
     
-    public init() {
+    public init(_ evaluationClosure: @escaping EvaluationClosure) {
+        self.evaluationClosure = evaluationClosure
         queue = OperationQueue()
         queue.isSuspended = true
         queue.maxConcurrentOperationCount = 1
+    }
+    
+    public func evaluate(chromosome: GeneticChromosome) -> Double {
+        return evaluationClosure(chromosome)
     }
     
     public func pause() {
@@ -29,7 +36,7 @@ open class AsyncFitnessFunction: GeneticAsyncFitnessFunction {
     public func evaluate(chromosome: GeneticChromosome, fitnessClosure: @escaping (Double) -> ()) {
         queue.addOperation {
             // Get fitness
-            let fitness: Double = 0
+            let fitness = self.evaluate(chromosome: chromosome)
             
             fitnessClosure(fitness)
         }

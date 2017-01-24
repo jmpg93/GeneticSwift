@@ -8,6 +8,7 @@
 
 import Foundation
 
-public protocol  GeneticAsyncFitnessFunction {
+//TODO: Check
+public protocol  GeneticAsyncFitnessFunction : GeneticFitnessFunction {
     func evaluate(chromosome: GeneticChromosome, fitnessClosure: @escaping (Double) -> ())
 }

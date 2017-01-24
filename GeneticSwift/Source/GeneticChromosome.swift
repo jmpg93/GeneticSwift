@@ -12,6 +12,7 @@ public protocol GeneticChromosome : class {
     var fitness: Double { get set }
     
     func evaluate(with fitnessFunction: GeneticFitnessFunction)
+    //TODO: Check
     func evaluate(with fitnessFunction: GeneticAsyncFitnessFunction)
     
     func crossover(with chromosome: GeneticChromosome) -> (c1: GeneticChromosome, c2: GeneticChromosome)
@@ -20,8 +21,13 @@ public protocol GeneticChromosome : class {
 }
 
 public extension GeneticChromosome {
+    //TODO: Check
     public func evaluate(with fitnessFunction: GeneticFitnessFunction) {
-        self.fitness = fitnessFunction.evaluate(chromosome: self)
+        if let fitnessFunction = fitnessFunction as? GeneticAsyncFitnessFunction {
+            evaluate(with: fitnessFunction)
+        } else {
+            self.fitness = fitnessFunction.evaluate(chromosome: self)
+        }
     }
     
     public func evaluate(with fitnessFunction: GeneticAsyncFitnessFunction) {
