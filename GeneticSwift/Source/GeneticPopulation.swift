@@ -32,6 +32,7 @@ public protocol GeneticPopulation : class, CustomStringConvertible {
     func select()
     
     func add(chromosome: GeneticChromosome)
+    func rebase(chromosomes: [GeneticChromosome])
 }
 
 

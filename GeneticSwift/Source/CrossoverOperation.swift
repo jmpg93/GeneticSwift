@@ -8,32 +8,20 @@
 
 import Foundation
 
-public class CrossoverOperation: Operation, GeneticOperation {
-    private unowned let c1: GeneticChromosome
-    private unowned let c2: GeneticChromosome
-    private unowned let population: GeneticPopulation
-    
-    init(c1: GeneticChromosome, c2: GeneticChromosome, over population: GeneticPopulation) {
-        self.c1 = c1
-        self.c2 = c2
-        self.population = population
-    }
-    
-    public func operation() {
-        let (newC1, newC2) = c1.crossover(with: c2)
-        
-        newC1.evaluate(with: population.fitnessFunction)
-        newC2.evaluate(with: population.fitnessFunction)
-        
-        population.add(chromosome: newC1)
-        population.add(chromosome: newC2)
-    }
-    
-    override public func main() {
-        if self.isCancelled {
-            return
+public class CrossoverOperation: BasicGeneticOperation {
+    public override func addOperations() {
+        for (index, chromosome) in chromosomes.enumerated() where index < size {
+            if random <= mutationRate && index >= 1 {
+                addExecutionBlock {
+                    let (c1, c2) = chromosome.crossover(with: self.chromosomes[index-1])
+                    
+                    c1.evaluate(with: self.fitnessFunction)
+                    c2.evaluate(with: self.fitnessFunction)
+                    
+                    self.population.add(chromosome: c1)
+                    self.population.add(chromosome: c2)
+                }
+            }
         }
-        
-        operation()
     }
 }

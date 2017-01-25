@@ -8,26 +8,18 @@
 
 import Foundation
 
-public class MutationOperation: Operation, GeneticOperation {
-    private unowned let chromocome: GeneticChromosome
-    private unowned let population: GeneticPopulation
+public class MutationOperation: BasicGeneticOperation {
     
-    init(chromocome: GeneticChromosome, over population: GeneticPopulation) {
-        self.chromocome = chromocome
-        self.population = population
-    }
-    
-    public func operation() {
-        let newChromocome = chromocome.mutate()
-        newChromocome.evaluate(with: population.fitnessFunction)
-        population.add(chromosome: newChromocome)
-    }
-    
-    override public func main() {
-        if self.isCancelled {
-            return
+    public override func addOperations() {
+        for (index, chromosome) in chromosomes.enumerated() where index < size {
+            if random <= crossoverRate {
+                addExecutionBlock {
+                    let mutatedChromosome = chromosome.mutate()
+                    mutatedChromosome.evaluate(with: self.fitnessFunction)
+                    
+                    self.population.add(chromosome: mutatedChromosome)
+                }
+            }
         }
-        
-        operation()
     }
 }

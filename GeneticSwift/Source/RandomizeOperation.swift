@@ -8,26 +8,17 @@
 
 import Foundation
 
-public class RandomizeOperation: Operation, GeneticOperation {
-    private unowned let ancestor: GeneticChromosome
-    private unowned let population: GeneticPopulation
-    
-    init(ancestor: GeneticChromosome, over population: GeneticPopulation) {
-        self.ancestor = ancestor
-        self.population = population
-    }
-    
-    public func operation() {
-        let new = ancestor.new()
-        new.evaluate(with: population.fitnessFunction)
-        population.add(chromosome: new)
-    }
-    
-    override public func main() {
-        if self.isCancelled {
-            return
-        }
+public class RandomizeOperation: BasicGeneticOperation {
+    public override func addOperations() {
+        let emptySlots = size - chromosomes.count
         
-        operation()
+        for index in 0...emptySlots where index > 0 {
+            addExecutionBlock {
+                let random = self.ancestor.new()
+                random.evaluate(with: self.fitnessFunction)
+                
+                self.population.add(chromosome: random)
+            }
+        }
     }
 }

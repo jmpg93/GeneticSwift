@@ -111,6 +111,10 @@ open class Population : GeneticPopulation, GeneticPopulationDelegate {
         self.chromosomes += [chromosome]
     }
     
+    public func rebase(chromosomes: [GeneticChromosome]) {
+        self.chromosomes = chromosomes
+    }
+    
     private func end() {
         
         if let delegate = delegate, !delegate.populationShouldStartNextGeneration(population: self) {
