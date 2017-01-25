@@ -68,7 +68,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let population = Population(ancestor: ancestor,
                                     size: 30,
                                     fitnessFunction: exp,
-                                    selectionMethod: ElitistSelectionMethod(selectNumber: 15))
+                                    selectionMethod: ElitistSelectionMethod(select: 15))
         
         population.delegate = self
         population.start()

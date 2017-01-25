@@ -51,5 +51,7 @@ class BasicOperation : Operation {
         _executing = true
         
         closure()
+        
+        _finished = true
     }
 }

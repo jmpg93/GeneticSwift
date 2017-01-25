@@ -59,6 +59,7 @@ open class Population : GeneticPopulation, GeneticPopulationDelegate {
     }
     
     open func mutate() {
+        
         for (index, chromosome) in chromosomes.enumerated() where index < size {
             if random <= crossoverRate {
                 let mutatedChromosome = chromosome.mutate()

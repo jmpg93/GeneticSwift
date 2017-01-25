@@ -11,8 +11,8 @@ import Foundation
 public struct ElitistSelectionMethod : GeneticSelectionMethod, CustomStringConvertible {
     public let selectNumber: Int
     
-    public init(selectNumber: Int) {
-        self.selectNumber = selectNumber
+    public init(select: Int) {
+        self.selectNumber = select
     }
     
     public func select(population: GeneticPopulation) -> SelectionOutcome {
