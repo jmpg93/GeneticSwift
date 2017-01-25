@@ -47,6 +47,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                     continue
                 }
                 
+                sleep(2)
+                
                 print("")
                 print("Point: (x:\(value.x), y:\(value.y))")
                 let shouldBe = 2*value.x
@@ -70,6 +72,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         population.delegate = self
         population.start()
+        print("Here")
     }
 }
 

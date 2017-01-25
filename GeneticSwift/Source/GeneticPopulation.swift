@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol GeneticPopulation : CustomStringConvertible {
+public protocol GeneticPopulation : class, CustomStringConvertible {
     
     var ancestor: GeneticChromosome { get }
     var best: GeneticChromosome { get }
@@ -27,11 +27,12 @@ public protocol GeneticPopulation : CustomStringConvertible {
     var mutationRate: Double { get }
     var selectionRage: Double { get }
     
-    mutating func crossover()
-    mutating func mutate()
-    mutating func select()
+    func crossover()
+    func mutate()
+    func select()
+    
+    func add(chromosome: GeneticChromosome)
 }
-
 
 
 public extension GeneticPopulation {

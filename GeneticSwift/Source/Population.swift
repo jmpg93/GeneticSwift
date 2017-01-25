@@ -16,13 +16,13 @@ open class Population : GeneticPopulation, GeneticPopulationDelegate {
     
     open weak var delegate: GeneticPopulationDelegate? = nil
     
-    open private(set) var ancestor: GeneticChromosome
-    open private(set) var best: GeneticChromosome
+    open var ancestor: GeneticChromosome
+    open var best: GeneticChromosome
     
-    open private(set) var phase: EvolutionPhase
-    open private(set) var generation: Int
+    open var phase: EvolutionPhase
+    open var generation: Int
     
-    open private(set) var chromosomes: [GeneticChromosome]
+    open var chromosomes: [GeneticChromosome]
     
     public init(ancestor: GeneticChromosome, size: Int, fitnessFunction: GeneticFitnessFunction, selectionMethod: GeneticSelectionMethod) {
         self.size = size
@@ -106,7 +106,11 @@ open class Population : GeneticPopulation, GeneticPopulationDelegate {
         startNextPhase()
     }
     
-    open func end() {
+    public func add(chromosome: GeneticChromosome) {
+        self.chromosomes += [chromosome]
+    }
+    
+    private func end() {
         
         if let delegate = delegate, !delegate.populationShouldStartNextGeneration(population: self) {
             return

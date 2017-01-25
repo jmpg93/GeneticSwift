@@ -9,9 +9,10 @@
 import Foundation
 
 open class Chromosome<T: Randomizable> : GeneticChromosome, CustomStringConvertible {
-    
     open var fitness: Double
-    open var values: [T] = []
+    open var evaluated: Bool = false
+    
+    open private(set) var values: [T] = []
     
     private let generator: ChromosomeGenerator<T>
     
