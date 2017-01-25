@@ -36,7 +36,7 @@ let straightFunction = BaseFitnessFunction { chromosome in
 let population = Population(ancestor: ancestor,
                             size: 30,
                             fitnessFunction: straightFunction,
-                            selectionMethod: ElitistSelectionMethod(selectNumber: 15))
+                            selectionMethod: ElitistSelectionMethod(select: 15))
         
 population.delegate = self
 population.start()
