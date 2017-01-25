@@ -8,11 +8,14 @@
 
 import Foundation
 
-public class SearchOperation: BasicGeneticOperation {
+public class EndOperation: BasicGeneticOperation {
     public override func addOperations() {
         addExecutionBlock {
-            let outcome = self.selectionMethod.select(population: self.population)
-            self.population.rebase(chromosomes: outcome.selected)
+            if let delegate = self.population.delegate, !delegate.populationShouldStartNextGeneration(population: self.population) {
+                return
+            }
+            
+            self.population.next()
         }
     }
 }

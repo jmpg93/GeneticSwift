@@ -40,7 +40,8 @@ open class Population : GeneticPopulation, GeneticPopulationDelegate {
         self.chromosomes = []
     }
     
-    open func start() {
+    open func next() {
+        generation += 1
         start(phase: .randomize)
     }
     

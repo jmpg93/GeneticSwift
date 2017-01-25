@@ -27,9 +27,12 @@ public protocol GeneticPopulation : class, CustomStringConvertible {
     var mutationRate: Double { get }
     var selectionRage: Double { get }
     
+    func next()
+    
     func crossover()
     func mutate()
     func select()
+    func search()
     
     func add(chromosome: GeneticChromosome)
     func rebase(chromosomes: [GeneticChromosome])
