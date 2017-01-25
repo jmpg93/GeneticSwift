@@ -12,7 +12,7 @@ public enum EvolutionPhase : CustomStringConvertible {
     case randomize
     case crossover
     case mutation
-    case evaluation
+    case search
     case selection
     case end
     case none
@@ -24,8 +24,8 @@ public enum EvolutionPhase : CustomStringConvertible {
         case .crossover:
             return .mutation
         case .mutation:
-            return .evaluation
-        case .evaluation:
+            return .search
+        case .search:
             return .selection
         case .selection:
             return .end
@@ -44,8 +44,8 @@ public enum EvolutionPhase : CustomStringConvertible {
             return "Crossover"
         case .mutation:
             return "Mutation"
-        case .evaluation:
-            return "Evaluation"
+        case .search:
+            return "Search"
         case .selection:
             return "Selection"
         case .end:

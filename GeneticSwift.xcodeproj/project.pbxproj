@@ -20,7 +20,6 @@
 		6CC538F61E33CE8E00508318 /* Chromosome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CC538F51E33CE8E00508318 /* Chromosome.swift */; };
 		6CEEA0B61E343AA20067F8D8 /* GeneticPopulationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CEEA0B51E343AA20067F8D8 /* GeneticPopulationDelegate.swift */; };
 		6CEEA0BA1E34DAB70067F8D8 /* EvolutionPhase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CEEA0B91E34DAB70067F8D8 /* EvolutionPhase.swift */; };
-		6CEEA0BC1E34DBC10067F8D8 /* GeneticPopulationDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CEEA0BB1E34DBC10067F8D8 /* GeneticPopulationDataSource.swift */; };
 		6CF5D0961E362DC90061261F /* Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CF5D0951E362DC90061261F /* Random.swift */; };
 		6CF5D0981E3634D40061261F /* ChromosomeGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CF5D0971E3634D40061261F /* ChromosomeGenerator.swift */; };
 		6CF5D09A1E364C890061261F /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CF5D0991E364C890061261F /* Extensions.swift */; };
@@ -53,7 +52,6 @@
 		6CC538F51E33CE8E00508318 /* Chromosome.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Chromosome.swift; path = Source/Chromosome.swift; sourceTree = "<group>"; };
 		6CEEA0B51E343AA20067F8D8 /* GeneticPopulationDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GeneticPopulationDelegate.swift; path = Source/GeneticPopulationDelegate.swift; sourceTree = "<group>"; };
 		6CEEA0B91E34DAB70067F8D8 /* EvolutionPhase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EvolutionPhase.swift; path = Source/EvolutionPhase.swift; sourceTree = "<group>"; };
-		6CEEA0BB1E34DBC10067F8D8 /* GeneticPopulationDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GeneticPopulationDataSource.swift; path = Source/GeneticPopulationDataSource.swift; sourceTree = "<group>"; };
 		6CF5D0951E362DC90061261F /* Random.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Random.swift; path = Source/Random.swift; sourceTree = "<group>"; };
 		6CF5D0971E3634D40061261F /* ChromosomeGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChromosomeGenerator.swift; path = Source/ChromosomeGenerator.swift; sourceTree = "<group>"; };
 		6CF5D0991E364C890061261F /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Extensions.swift; path = Source/Extensions.swift; sourceTree = "<group>"; };
@@ -210,7 +208,6 @@
 			children = (
 				6CC538EB1E33C59300508318 /* GeneticPopulation.swift */,
 				6CEEA0B51E343AA20067F8D8 /* GeneticPopulationDelegate.swift */,
-				6CEEA0BB1E34DBC10067F8D8 /* GeneticPopulationDataSource.swift */,
 			);
 			name = Population;
 			sourceTree = "<group>";
@@ -359,7 +356,6 @@
 				6CC538EA1E33B94B00508318 /* GeneticChromosome.swift in Sources */,
 				6CF5D0981E3634D40061261F /* ChromosomeGenerator.swift in Sources */,
 				6CF5D0C41E365FB90061261F /* DoublesChromosome.swift in Sources */,
-				6CEEA0BC1E34DBC10067F8D8 /* GeneticPopulationDataSource.swift in Sources */,
 				6CC538EC1E33C59300508318 /* GeneticPopulation.swift in Sources */,
 				6CF5D09A1E364C890061261F /* Extensions.swift in Sources */,
 			);

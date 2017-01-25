@@ -16,14 +16,12 @@ public protocol GeneticPopulation : CustomStringConvertible {
     var phase: EvolutionPhase { get }
     
     var chromosomes: [GeneticChromosome] { get }
-    
-    //TODO: Decide.
+
     var size: Int { get }
     var fitnessFunction: GeneticFitnessFunction { get }
     var selectionMethod: GeneticSelectionMethod { get }
     
     var delegate: GeneticPopulationDelegate? { get set }
-    var dataSource: GeneticPopulationDataSource? { get set }
     
     var crossoverRate: Double { get }
     var mutationRate: Double { get }

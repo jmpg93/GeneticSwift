@@ -15,7 +15,6 @@ open class Population : GeneticPopulation, GeneticPopulationDelegate {
     open let selectionMethod: GeneticSelectionMethod
     
     open weak var delegate: GeneticPopulationDelegate? = nil
-    open weak var dataSource: GeneticPopulationDataSource? = nil
     
     open private(set) var ancestor: GeneticChromosome
     open private(set) var best: GeneticChromosome
@@ -60,7 +59,6 @@ open class Population : GeneticPopulation, GeneticPopulationDelegate {
     }
     
     open func mutate() {
-        
         for (index, chromosome) in chromosomes.enumerated() where index < size {
             if random <= crossoverRate {
                 let mutatedChromosome = chromosome.mutate()
@@ -97,9 +95,8 @@ open class Population : GeneticPopulation, GeneticPopulationDelegate {
         startNextPhase()
     }
     
-    open func evaluate() {
+    open func search() {
         
-        // If function is async => Wait for all operations to end => Then start evaluation
         for chromosome in chromosomes {
             if chromosome.fitness > best.fitness {
                 best = chromosome
@@ -136,8 +133,8 @@ open class Population : GeneticPopulation, GeneticPopulationDelegate {
             crossover()
         case .mutation:
             mutate()
-        case .evaluation:
-            evaluate()
+        case .search:
+            search()
         case .selection:
             select()
         case .end:
