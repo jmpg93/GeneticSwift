@@ -9,7 +9,5 @@
 import Foundation
 
 public protocol GeneticAproximationFitnessFunction : GeneticFitnessFunction {
-    associatedtype ChomosomeValue
-    
     var aproximationFunction: AproximationFunctionBlock { get }
 }

@@ -11,7 +11,6 @@ import Foundation
 public typealias AproximationFunctionBlock = (_ x: Double) -> (Double)
 
 open class AproximationFitnessFunction<T> : GeneticAproximationFitnessFunction where T : Aproximatable2D {
-    public typealias ChomosomeValue = T
     open let aproximationFunction: AproximationFunctionBlock
     
     public init(aproximationFunction: @escaping AproximationFunctionBlock) {
@@ -19,7 +18,7 @@ open class AproximationFitnessFunction<T> : GeneticAproximationFitnessFunction w
     }
     
     //TODO: Improve aproximation algorithm
-    open func evaluate(chromosome: Chromosome<ChomosomeValue>) -> Double {
+    open func evaluate(chromosome: Chromosome<T>) -> Double {
         var fitness: Double = 5000
         
         for value in chromosome.values {
@@ -40,8 +39,8 @@ open class AproximationFitnessFunction<T> : GeneticAproximationFitnessFunction w
     }
     
     open func evaluate(chromosome: GeneticChromosome) -> Double {
-        guard let c = chromosome as? Chromosome<ChomosomeValue> else {
-            fatalError("The type is not setted")
+        guard let c = chromosome as? Chromosome<T> else {
+            fatalError("This can't be possible.")
         }
         
         return evaluate(chromosome: c)
