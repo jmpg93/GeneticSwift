@@ -9,11 +9,11 @@
 import Foundation
 
 extension DispatchQueue {
-    static func safelySyncOnMain(_ closure: () -> ())  {
+    static func safelySync<T>(execute work: () throws -> T) rethrows -> T {
         if Thread.isMainThread {
-            return closure()
+            return try work()
         } else {
-            return DispatchQueue.main.sync(execute: closure)
+            return try DispatchQueue.main.sync(execute: work)
         }
     }
 }

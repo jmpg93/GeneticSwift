@@ -15,11 +15,7 @@ public struct CustomFitnessFunction: GeneticFitnessFunction {
         self.evaluateClosure = evaluateClosure
     }
     
-    public func evaluate(chromosome: GeneticChromosome) -> Double {
-        if Thread.isMainThread {
-            return evaluateClosure(chromosome)
-        } else {
-            return DispatchQueue.main.sync(execute: { evaluateClosure(chromosome) })
-        }
+    public func evaluate(chromosome: GeneticChromosome) -> Double {        
+        return DispatchQueue.safelySync(execute: { evaluateClosure(chromosome) })
     }
 }

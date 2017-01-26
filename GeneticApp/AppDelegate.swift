@@ -41,8 +41,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             
             var fitness: Double = 5000
             
-            sleep(2)
-            
             for value in chromosome.values {
                 if value.x < 1 || value.y < 1 {
                     fitness -= 1000
@@ -73,7 +71,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         population.delegate = self
         population.next()
-        print("Loco")
     }
 }
 

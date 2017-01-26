@@ -9,7 +9,8 @@
 import Foundation
 
 public class BasicGeneticOperation: BlockOperation, GeneticOperation {
-    public unowned let population: GeneticPopulation
+    //TODO: Make unowned
+    public let population: GeneticPopulation
     
     init(population: GeneticPopulation) {
         self.population = population

@@ -8,14 +8,21 @@
 
 import Foundation
 
-public struct OptimizationFitnessFunction : GeneticSelectionMethod, CustomStringConvertible {
+public protocol OptimizationFitnessFunction : GeneticFitnessFunction {
+    func optimizationFunction(x: Double) -> Double
+}
+
+public class TestOptimizationFitnessFunction : OptimizationFitnessFunction {
+    public func optimizationFunction(x: Double) -> Double {
+        return 0
+    }
+    
     public func evaluate(chromosome: GeneticChromosome) -> Double {
-        fatalError()
-        if Thread.isMainThread {
-            return evaluateClosure(chromosome)
-        } else {
-            return DispatchQueue.main.sync(execute: { evaluateClosure(chromosome) })
-        }
+
+        let idShouldBe = optimizationFunction(x: 0)
+        let itIs = 0
+        
+        return 0
     }
     
 }

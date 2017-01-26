@@ -18,8 +18,7 @@ public protocol Randomizable {
 }
 
 extension Int : Randomizable {
-    
-    /// SwiftRandom extension
+
     public static func random(_ lower: Int = 0, _ upper: Int = 1) -> Int {
         return lower + Int(arc4random_uniform(UInt32(upper - lower + 1)))
     }
@@ -57,5 +56,34 @@ extension Float : Randomizable {
     
     public static var randomUnitFactor: Float {
         return random(-1, 1)
+    }
+}
+
+extension Point : Randomizable {
+    public static func random(_ lower: Point, _ upper: Point) -> Point {
+        let x = Int.random(lower.x, upper.x)
+        let y = Int.random(lower.y, upper.y)
+        
+        return Point(x, y)
+    }
+    
+    public static func + (m1: Point, m2: Point) -> Point {
+        return Point(m1.x + m2.x, m2.y + m1.y)
+    }
+    
+    public static func * (m1: Point, m2: Point) -> Point {
+        return Point(m1.x * m2.x, m2.y * m1.y)
+    }
+    
+    public static func - (m1: Point, m2: Point) -> Point {
+        return Point(m1.x * m2.x, m2.y * m1.y)
+    }
+    
+    
+    public static var randomUnitFactor: Point {
+        let x = Int.random(0, 1)
+        let y = Int.random(0, 1)
+        
+        return Point(x, y)
     }
 }
