@@ -9,7 +9,7 @@
 import Foundation
 public typealias EvaluationClosure = (_ chromosome: GeneticChromosome) -> Double
 
-public struct BaseFitnessFunction: GeneticFitnessFunction {
+public struct CustomFitnessFunction: GeneticFitnessFunction {
     let evaluateClosure: EvaluationClosure
     public init(_ evaluateClosure: @escaping EvaluationClosure) {
         self.evaluateClosure = evaluateClosure

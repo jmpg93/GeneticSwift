@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class BasicGeneticOperation: BlockOperation {
+public class BasicGeneticOperation: BlockOperation, GeneticOperation {
     public unowned let population: GeneticPopulation
     
     init(population: GeneticPopulation) {

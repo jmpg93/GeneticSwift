@@ -34,7 +34,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         )
         
         // Aproximating func y = 2 * x
-        let exp = BaseFitnessFunction { chromosome in
+        let exp = CustomFitnessFunction { chromosome in
             guard let chromosome = chromosome as? Chromosome<Point> else {
                 fatalError()
             }

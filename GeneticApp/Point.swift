@@ -45,7 +45,7 @@ extension Point : Randomizable {
     }
     
     
-    public static var randomFactor: Point {
+    public static var randomUnitFactor: Point {
         let x = Int.random(0, 1)
         let y = Int.random(0, 1)
         
