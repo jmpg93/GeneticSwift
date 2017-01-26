@@ -18,6 +18,11 @@ extension DispatchQueue {
     }
 }
 
+extension Double {
+    public var twoDecimals: String {
+        return String(format:"%.2f", self)
+    }
+}
 extension Collection {
     
     func chunk(withDistance distance: IndexDistance) -> [[SubSequence.Iterator.Element]] {

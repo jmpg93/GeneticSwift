@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  Aproximatable3D.swift
 //  GeneticSwift
 //
 //  Created by Jose Maria Puerta on 26/1/17.
@@ -8,7 +8,6 @@
 
 import Foundation
 
-public protocol Aproximatable2D : Randomizable {
-    var x: Double { get }
-    var y: Double { get }
+public protocol Pointable3D : Pointable2D {
+    var z: Double { get }
 }

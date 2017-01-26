@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct Point: Aproximatable2D, CustomStringConvertible {
+public struct Point: Pointable2D, CustomStringConvertible {
     public let x: Double
     public let y: Double
     

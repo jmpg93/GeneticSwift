@@ -10,32 +10,27 @@ import Foundation
 
 public typealias AproximationFunctionBlock = (_ x: Double) -> (Double)
 
-open class AproximationFitnessFunction<T> : GeneticAproximationFitnessFunction where T : Aproximatable2D {
+open class AproximationFitnessFunction<T> : GeneticAproximationFitnessFunction where T : Pointable2D {
     open let aproximationFunction: AproximationFunctionBlock
     
     public init(aproximationFunction: @escaping AproximationFunctionBlock) {
         self.aproximationFunction = aproximationFunction
     }
-    
-    //TODO: Improve aproximation algorithm
+
     open func evaluate(chromosome: Chromosome<T>) -> Double {
-        var fitness: Double = 5000
+        var error: Double = 0
         
         for value in chromosome.values {
-            if value.x < 1 || value.y < 1 {
-                fitness -= 1000
-                continue
-            }
             
             let itShouldBe = aproximationFunction(value.x)
             let itIs = value.y
             
             let delta = itShouldBe - itIs
             
-            fitness -= Double(abs(delta))
+            error += Double(abs(delta))
         }
         
-        return fitness
+        return 100 / (error - 1)
     }
     
     open func evaluate(chromosome: GeneticChromosome) -> Double {
