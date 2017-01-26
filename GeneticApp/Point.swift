@@ -8,11 +8,11 @@
 
 import Foundation
 
-public struct Point: CustomStringConvertible {
-    public let x: Int
-    public let y: Int
+public struct Point: Aproximatable2D, CustomStringConvertible {
+    public let x: Double
+    public let y: Double
     
-    public init(_ x: Int, _ y: Int) {
+    public init(_ x: Double, _ y: Double) {
         self.x = x
         self.y = y
     }

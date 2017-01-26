@@ -17,9 +17,19 @@ public struct ElitistSelectionMethod : GeneticSelectionMethod, CustomStringConve
     
     public func select(population: GeneticPopulation) -> SelectionOutcome {
         let chromosomes = population.chromosomes.sorted { $0.fitness > $1.fitness }
-        let slices = chromosomes.chunk(withDistance: selectNumber)
         
-        return (selected: slices[0], discared: slices[1])
+        var selected: [GeneticChromosome] = []
+        var discared: [GeneticChromosome] = []
+        
+        for (index, chromosome) in chromosomes.enumerated() {
+            if index < selectNumber {
+                selected += [chromosome]
+            } else {
+                discared += [chromosome]
+            }
+        }
+        
+        return (selected: selected, discared: discared)
     }
     
     public var description: String {

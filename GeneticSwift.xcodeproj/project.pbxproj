@@ -10,6 +10,8 @@
 		6C1FD53D1E397D5700110081 /* WheelSelectionMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C1FD53C1E397D5700110081 /* WheelSelectionMethod.swift */; };
 		6C1FD53E1E39806800110081 /* Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CF5D0C51E3666FD0061261F /* Point.swift */; };
 		6C1FD5401E39807E00110081 /* PointChromosome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C1FD53F1E39807E00110081 /* PointChromosome.swift */; };
+		6C1FD5421E398A2B00110081 /* Aproximatable2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C1FD5411E398A2B00110081 /* Aproximatable2D.swift */; };
+		6C1FD5441E398A8100110081 /* Aproximatable3D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C1FD5431E398A8100110081 /* Aproximatable3D.swift */; };
 		6C3023F51E390FA000B16E2C /* BasicGeneticOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C3023F41E390FA000B16E2C /* BasicGeneticOperation.swift */; };
 		6C30241C1E3939BC00B16E2C /* SelectOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C30241B1E3939BC00B16E2C /* SelectOperation.swift */; };
 		6C30241E1E393B5700B16E2C /* EndOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C30241D1E393B5700B16E2C /* EndOperation.swift */; };
@@ -17,9 +19,10 @@
 		6C3024221E3977A700B16E2C /* GenerationPhase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C3024211E3977A700B16E2C /* GenerationPhase.swift */; };
 		6C3024241E397A2A00B16E2C /* GeneticOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C3024231E397A2A00B16E2C /* GeneticOperation.swift */; };
 		6C3024271E397A8600B16E2C /* RankSelectionMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C3024261E397A8600B16E2C /* RankSelectionMethod.swift */; };
-		6C3024291E397BFF00B16E2C /* OptimizationFitnessFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C3024281E397BFF00B16E2C /* OptimizationFitnessFunction.swift */; };
+		6C3024291E397BFF00B16E2C /* GeneticAproximationFitnessFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C3024281E397BFF00B16E2C /* GeneticAproximationFitnessFunction.swift */; };
 		6C5830591E32EA2B0041AB22 /* GeneticSwift.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C5830571E32EA2B0041AB22 /* GeneticSwift.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6C615E2C1E33F5BE00975A93 /* ElitistSelectionMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C615E2B1E33F5BE00975A93 /* ElitistSelectionMethod.swift */; };
+		6C7DAE521E398E6000FE8999 /* AproximationFitnessFunctionswift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C1FD5451E398CB400110081 /* AproximationFitnessFunctionswift.swift */; };
 		6C88E5BE1E35879E00F520F3 /* RandomGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C88E5BD1E35879E00F520F3 /* RandomGenerator.swift */; };
 		6CC538EA1E33B94B00508318 /* GeneticChromosome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CC538E91E33B94B00508318 /* GeneticChromosome.swift */; };
 		6CC538EC1E33C59300508318 /* GeneticPopulation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CC538EB1E33C59300508318 /* GeneticPopulation.swift */; };
@@ -49,6 +52,9 @@
 /* Begin PBXFileReference section */
 		6C1FD53C1E397D5700110081 /* WheelSelectionMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WheelSelectionMethod.swift; path = Source/WheelSelectionMethod.swift; sourceTree = "<group>"; };
 		6C1FD53F1E39807E00110081 /* PointChromosome.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PointChromosome.swift; path = Source/PointChromosome.swift; sourceTree = "<group>"; };
+		6C1FD5411E398A2B00110081 /* Aproximatable2D.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Aproximatable2D.swift; path = Source/Aproximatable2D.swift; sourceTree = "<group>"; };
+		6C1FD5431E398A8100110081 /* Aproximatable3D.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Aproximatable3D.swift; path = Source/Aproximatable3D.swift; sourceTree = "<group>"; };
+		6C1FD5451E398CB400110081 /* AproximationFitnessFunctionswift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AproximationFitnessFunctionswift.swift; path = Source/AproximationFitnessFunctionswift.swift; sourceTree = "<group>"; };
 		6C3023F41E390FA000B16E2C /* BasicGeneticOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BasicGeneticOperation.swift; path = Source/BasicGeneticOperation.swift; sourceTree = "<group>"; };
 		6C30241B1E3939BC00B16E2C /* SelectOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SelectOperation.swift; path = Source/SelectOperation.swift; sourceTree = "<group>"; };
 		6C30241D1E393B5700B16E2C /* EndOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EndOperation.swift; path = Source/EndOperation.swift; sourceTree = "<group>"; };
@@ -56,7 +62,7 @@
 		6C3024211E3977A700B16E2C /* GenerationPhase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GenerationPhase.swift; path = Source/GenerationPhase.swift; sourceTree = "<group>"; };
 		6C3024231E397A2A00B16E2C /* GeneticOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GeneticOperation.swift; path = Source/GeneticOperation.swift; sourceTree = "<group>"; };
 		6C3024261E397A8600B16E2C /* RankSelectionMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RankSelectionMethod.swift; path = Source/RankSelectionMethod.swift; sourceTree = "<group>"; };
-		6C3024281E397BFF00B16E2C /* OptimizationFitnessFunction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OptimizationFitnessFunction.swift; path = Source/OptimizationFitnessFunction.swift; sourceTree = "<group>"; };
+		6C3024281E397BFF00B16E2C /* GeneticAproximationFitnessFunction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GeneticAproximationFitnessFunction.swift; path = Source/GeneticAproximationFitnessFunction.swift; sourceTree = "<group>"; };
 		6C5830541E32EA2B0041AB22 /* GeneticSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GeneticSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C5830571E32EA2B0041AB22 /* GeneticSwift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GeneticSwift.h; sourceTree = "<group>"; };
 		6C5830581E32EA2B0041AB22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -112,8 +118,19 @@
 			isa = PBXGroup;
 			children = (
 				6CC538ED1E33C6C300508318 /* GeneticFitnessFunction.swift */,
+				6C1FD5471E398CD200110081 /* Aproximation */,
 			);
 			name = FitnessFunctions;
+			sourceTree = "<group>";
+		};
+		6C1FD5471E398CD200110081 /* Aproximation */ = {
+			isa = PBXGroup;
+			children = (
+				6C3024281E397BFF00B16E2C /* GeneticAproximationFitnessFunction.swift */,
+				6C1FD5411E398A2B00110081 /* Aproximatable2D.swift */,
+				6C1FD5431E398A8100110081 /* Aproximatable3D.swift */,
+			);
+			name = Aproximation;
 			sourceTree = "<group>";
 		};
 		6C3024251E397A3000B16E2C /* Operations */ = {
@@ -128,7 +145,7 @@
 			isa = PBXGroup;
 			children = (
 				6CF5D09B1E364F900061261F /* CustomFitnessFunction.swift */,
-				6C3024281E397BFF00B16E2C /* OptimizationFitnessFunction.swift */,
+				6C1FD5451E398CB400110081 /* AproximationFitnessFunctionswift.swift */,
 			);
 			name = FitnessFunctions;
 			sourceTree = "<group>";
@@ -409,9 +426,11 @@
 				6C30241C1E3939BC00B16E2C /* SelectOperation.swift in Sources */,
 				6CC538F11E33CB5F00508318 /* GeneticSelectionMethod.swift in Sources */,
 				6C3024241E397A2A00B16E2C /* GeneticOperation.swift in Sources */,
+				6C7DAE521E398E6000FE8999 /* AproximationFitnessFunctionswift.swift in Sources */,
+				6C1FD5421E398A2B00110081 /* Aproximatable2D.swift in Sources */,
 				6CF5D0C81E367F630061261F /* GeneticChromosomeGenerator.swift in Sources */,
 				6CC7FE861E3852F100ACB907 /* CrossoverOperation.swift in Sources */,
-				6C3024291E397BFF00B16E2C /* OptimizationFitnessFunction.swift in Sources */,
+				6C3024291E397BFF00B16E2C /* GeneticAproximationFitnessFunction.swift in Sources */,
 				6C3024221E3977A700B16E2C /* GenerationPhase.swift in Sources */,
 				6C88E5BE1E35879E00F520F3 /* RandomGenerator.swift in Sources */,
 				6C1FD53E1E39806800110081 /* Point.swift in Sources */,
@@ -430,6 +449,7 @@
 				6CC538EC1E33C59300508318 /* GeneticPopulation.swift in Sources */,
 				6CF5D09A1E364C890061261F /* Extensions.swift in Sources */,
 				6C1FD5401E39807E00110081 /* PointChromosome.swift in Sources */,
+				6C1FD5441E398A8100110081 /* Aproximatable3D.swift in Sources */,
 				6CC7FE8A1E38561F00ACB907 /* RandomizeOperation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

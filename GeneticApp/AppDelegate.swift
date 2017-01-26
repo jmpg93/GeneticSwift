@@ -34,35 +34,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         )
         
         // Aproximating func y = 2 * x
-        let exp = CustomFitnessFunction { chromosome in
-            guard let chromosome = chromosome as? Chromosome<Point> else {
-                fatalError()
-            }
-            
-            var fitness: Double = 5000
-            
-            for value in chromosome.values {
-                if value.x < 1 || value.y < 1 {
-                    fitness -= 1000
-                    continue
-                }
-                
-                print("")
-                print("Point: (x:\(value.x), y:\(value.y))")
-                let shouldBe = 2*value.x
-                let itIs = value.y
-                
-                let delta = shouldBe - itIs
-                
-                print("Y should be: \(shouldBe), and it is \(itIs)")
-                print("Delta: \(delta)")
-                
-                fitness -= Double(abs(delta))
-            }
-            
-            return fitness
-            
-        }
+        let exp = AproximationFitnessFunction<Point>(aproximationFunction: { x in
+            return x * 2
+        })
         
         let population = Population(ancestor: ancestor,
                                     size: 30,

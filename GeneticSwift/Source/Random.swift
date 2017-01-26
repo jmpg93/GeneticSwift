@@ -61,8 +61,8 @@ extension Float : Randomizable {
 
 extension Point : Randomizable {
     public static func random(_ lower: Point, _ upper: Point) -> Point {
-        let x = Int.random(lower.x, upper.x)
-        let y = Int.random(lower.y, upper.y)
+        let x = Double.random(lower.x, upper.x)
+        let y = Double.random(lower.y, upper.y)
         
         return Point(x, y)
     }
@@ -81,8 +81,8 @@ extension Point : Randomizable {
     
     
     public static var randomUnitFactor: Point {
-        let x = Int.random(0, 1)
-        let y = Int.random(0, 1)
+        let x = Double.random(0, 1)
+        let y = Double.random(0, 1)
         
         return Point(x, y)
     }
