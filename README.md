@@ -5,39 +5,28 @@
 ## What is GeneticSwift?
 __GeneticSwift__ provides basic tools that allows to solve many different problems (optimization, approximation, prediction, etc) by using genetic algorithms.
 
-A simple approximation could be made with a single definition of the fitness function:
+A simple regression could be made with a single definition of the fitness function:
 
 ```swift
-// Aproximating func y = 2 * x
-let straightFunction = BaseFitnessFunction { chromosome in
-    guard let chromosome = chromosome as? Chromosome<Point> else {
-        fatalError()
-    }
+private func startRegresion() {
+    let ancestor = DoublesChromosome(values: [1, 2, 3],
+                                     valuesRange: 0..<10,
+                                     multiplierRange: 0..<2,
+                                     additionRange: 0..<0.5)
     
-    var fitness: Double = 5000
+    let regresionPoints =  [ Point(1, 1), Point(2, 5), Point(3, 7) ]
+    let regresionFunc = DoubleRegressionFitnessFunction<Point>(values: regresionPoints)
     
-    for value in chromosome.values {
-        if value.x < 1 || value.y < 1 {
-            fitness -= 1000
-            continue
-        }
-		
-        let shouldBe = 2*value.x
-        let itIs = value.y
-        
-        let delta = shouldBe - itIs
-        
-        fitness -= Double(abs(delta))
-    }
+    let population = Population(ancestor: ancestor,
+                                size: 40,
+                                fitnessFunction: regresionFunc,
+                                selectionMethod: ElitistSelectionMethod(select: 20))
     
-    return fitness
+    population.delegate = self
+    population.next()
 }
-
-let population = Population(ancestor: ancestor,
-                            size: 30,
-                            fitnessFunction: straightFunction,
-                            selectionMethod: ElitistSelectionMethod(select: 15))
-        
-population.delegate = self
-population.start()
+```
+You will get the polynomial: 
+```swift
+Found P(x) = -0.22 * X^3 + 1.13 * X^2 + 0.97 * X
 ```
