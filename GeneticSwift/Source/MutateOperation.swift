@@ -8,11 +8,10 @@
 
 import Foundation
 
-public class MutationOperation: BasicGeneticOperation {
-    
+public class MutateOperation: BasicGeneticOperation {
     public override func addOperations() {
         for (index, chromosome) in chromosomes.enumerated() where index < size {
-            if random <= crossoverRate {
+            if randomRate <= crossoverRate {
                 addExecutionBlock {
                     let mutatedChromosome = chromosome.mutate()
                     mutatedChromosome.evaluate(with: self.fitnessFunction)

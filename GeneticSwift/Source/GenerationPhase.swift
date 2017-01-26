@@ -1,14 +1,14 @@
 //
-//  EvolutionPhase.swift
+//  GenerationPhase.swift
 //  GeneticSwift
 //
-//  Created by Jose Maria Puerta on 22/1/17.
+//  Created by Jose Maria Puerta on 26/1/17.
 //  Copyright © 2017 Jose Maria Puerta. All rights reserved.
 //
 
 import Foundation
 
-public enum EvolutionPhase : CustomStringConvertible {
+public enum GenerationPhase : CustomStringConvertible {
     case randomize
     case crossover
     case mutation
@@ -17,7 +17,7 @@ public enum EvolutionPhase : CustomStringConvertible {
     case end
     case none
     
-    public var next: EvolutionPhase {
+    public var next: GenerationPhase {
         switch self {
         case .randomize:
             return .crossover

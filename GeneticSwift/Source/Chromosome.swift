@@ -46,7 +46,7 @@ open class Chromosome<T: Randomizable> : GeneticChromosome, CustomStringConverti
             }
             
         } else {
-            let factor = generator.randomFactor
+            let factor = generator.randomUnitFactor
             for index in 0...size {
                 let portion = (values2[index] - values1[index]) * factor
                 values1[index] = values1[index] + portion

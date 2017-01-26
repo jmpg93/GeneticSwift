@@ -16,6 +16,10 @@ public struct BaseFitnessFunction: GeneticFitnessFunction {
     }
     
     public func evaluate(chromosome: GeneticChromosome) -> Double {
-        return evaluateClosure(chromosome)
+        if Thread.isMainThread {
+            return evaluateClosure(chromosome)
+        } else {
+            return DispatchQueue.main.sync(execute: { evaluateClosure(chromosome) })
+        }
     }
 }

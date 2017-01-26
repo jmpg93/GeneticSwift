@@ -24,8 +24,8 @@ public struct ChromosomeGenerator<T: Randomizable> : GeneticChromosomeGenerator 
        return Int.random(0, values.count)
     }
 
-    public var randomFactor: T {
-        return T.randomFactor
+    public var randomUnitFactor: T {
+        return T.randomUnitFactor
     }
     
     public var newValue: T {

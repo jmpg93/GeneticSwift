@@ -14,7 +14,7 @@ public protocol Randomizable {
     static func * (m1: Self, m2: Self) -> Self
     static func - (m1: Self, m2: Self) -> Self
     
-    static var randomFactor: Self { get }
+    static var randomUnitFactor: Self { get }
 }
 
 extension Int : Randomizable {
@@ -24,7 +24,7 @@ extension Int : Randomizable {
         return lower + Int(arc4random_uniform(UInt32(upper - lower + 1)))
     }
     
-    public static var randomFactor: Int {
+    public static var randomUnitFactor: Int {
         return random(-1, 1)
     }
 }
@@ -35,7 +35,7 @@ extension Int32 : Randomizable {
         return Int32(Int64(r) + Int64(lower))
     }
     
-    public static var randomFactor: Int32 {
+    public static var randomUnitFactor: Int32 {
         return random(-1, 1)
     }
 }
@@ -45,7 +45,7 @@ extension Double : Randomizable {
         return (Double(arc4random()) / 0xFFFFFFFF) * (upper - lower) + lower
     }
     
-    public static var randomFactor: Double {
+    public static var randomUnitFactor: Double {
         return random(-1, 1)
     }
 }
@@ -55,7 +55,7 @@ extension Float : Randomizable {
         return (Float(arc4random()) / 0xFFFFFFFF) * (upper - lower) + lower
     }
     
-    public static var randomFactor: Float {
+    public static var randomUnitFactor: Float {
         return random(-1, 1)
     }
 }

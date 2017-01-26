@@ -19,93 +19,96 @@ open class Population : GeneticPopulation, GeneticPopulationDelegate {
     open var ancestor: GeneticChromosome
     open var best: GeneticChromosome
     
-    open var phase: EvolutionPhase
+    open var phase: GenerationPhase
     open var generation: Int
     
-    open var chromosomes: [GeneticChromosome]
+    private let lock: DispatchQueue = DispatchQueue(label: "lock")
+    private var _chromosomes: [GeneticChromosome]
+    open var chromosomes: [GeneticChromosome] {
+        get { return lock.sync { _chromosomes } }
+        set { lock.sync { _chromosomes = newValue } }
+    }
+    
+    private let queue: OperationQueue
     
     public init(ancestor: GeneticChromosome, size: Int, fitnessFunction: GeneticFitnessFunction, selectionMethod: GeneticSelectionMethod) {
         self.size = size
         self.fitnessFunction = fitnessFunction
         self.selectionMethod = selectionMethod
         
-        ancestor.evaluate(with: fitnessFunction)
-        
+        self.queue = OperationQueue()
+        self.queue.maxConcurrentOperationCount = 1
+
         self.ancestor = ancestor
         self.best = ancestor
         
-        self.generation = 0
         self.phase = .none
+        self.generation = 0
         
-        self.chromosomes = []
+        self._chromosomes = []
+    }
+    
+    open func pause() {
+        queue.isSuspended = true
+    }
+    
+    open func resume() {
+        queue.isSuspended = false
     }
     
     open func next() {
         generation += 1
-        start(phase: .randomize)
+        
+        randomize()
+        mutate()
+        crossover()
+        select()
+        search()
+        end()
     }
     
     open func randomize() {
-        
-        let emptySlots = size - chromosomes.count
-        
-        for index in 0...emptySlots where index > 0 {
-            let random = ancestor.new()
-            random.evaluate(with: fitnessFunction)
-            
-            chromosomes += [random]
-        }
-        
-        startNextPhase()
+        queue.addOperation(
+            RandomizeOperation(population: self)
+        )
     }
     
     open func mutate() {
-        
-        for (index, chromosome) in chromosomes.enumerated() where index < size {
-            if random <= crossoverRate {
-                let mutatedChromosome = chromosome.mutate()
-                mutatedChromosome.evaluate(with: fitnessFunction)
-                
-                chromosomes += [mutatedChromosome]
-            }
-        }
-        
-        startNextPhase()
+        queue.addOperation(
+            MutateOperation(population: self)
+        )
     }
     
     open func crossover() {
-        
-        for (index, chromosome) in chromosomes.enumerated() where index < size {
-            if random <= mutationRate && index >= 1 {
-                let (c1, c2) = chromosome.crossover(with: chromosomes[index-1])
-                
-                c1.evaluate(with: fitnessFunction)
-                c2.evaluate(with: fitnessFunction)
-                
-                chromosomes += [c1, c2]
-            }
-        }
-        
-        startNextPhase()
+        queue.addOperation(
+            CrossoverOperation(population: self)
+        )
     }
     
     open func select() {
-        
-        let outcome = selectionMethod.select(population: self)
-        chromosomes = outcome.selected
-        
-        startNextPhase()
+        queue.addOperation(
+            SelectOperation(population: self)
+        )
     }
     
     open func search() {
-        
+        queue.addOperation(
+            SearchOperation(population: self)
+        )
+    }
+    
+    open func end() {
+        queue.addOperation(
+            EndOperation(population: self)
+        )
+    }
+    
+    public func updateBestChromosome() {
         for chromosome in chromosomes {
             if chromosome.fitness > best.fitness {
                 best = chromosome
             }
         }
-        
-        startNextPhase()
     }
     
     public func add(chromosome: GeneticChromosome) {
@@ -114,47 +117,5 @@ open class Population : GeneticPopulation, GeneticPopulationDelegate {
     
     public func rebase(chromosomes: [GeneticChromosome]) {
         self.chromosomes = chromosomes
-    }
-    
-    private func end() {
-        
-        if let delegate = delegate, !delegate.populationShouldStartNextGeneration(population: self) {
-            return
-        } else if !populationShouldStartNextGeneration(population: self) {
-            return
-        }
-        
-        generation += 1
-        start(phase: .randomize)
-    }
-    
-    private func startNextPhase() {
-        delegate?.populationDidEndPhase(phase: phase, population: self)
-        start(phase: phase.next)
-    }
-    
-    private func start(phase: EvolutionPhase) {
-        self.phase = phase
-        
-        switch phase {
-        case .randomize:
-            randomize()
-        case .crossover:
-            crossover()
-        case .mutation:
-            mutate()
-        case .search:
-            search()
-        case .selection:
-            select()
-        case .end:
-            end()
-        case .none:
-            break
-        }
-    }
-    
-    private var random: Double {
-        return drand48()
     }
 }

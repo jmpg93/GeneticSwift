@@ -11,7 +11,7 @@ import Foundation
 public protocol GeneticChromosomeGenerator {
     associatedtype Randomizable
     
-    var randomFactor: Randomizable { get }
+    var randomUnitFactor: Randomizable { get }
     var newValue: Randomizable { get }
     var newAddition: Randomizable { get }
     var newMultiplier: Randomizable { get }

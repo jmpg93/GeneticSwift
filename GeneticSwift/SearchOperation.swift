@@ -11,7 +11,7 @@ import Foundation
 public class SearchOperation: BasicGeneticOperation {
     public override func addOperations() {
         addExecutionBlock {
-            self.population.search()
+            self.population.updateBestChromosome()
         }
     }
 }

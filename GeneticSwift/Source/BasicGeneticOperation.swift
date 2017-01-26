@@ -18,6 +18,10 @@ public class BasicGeneticOperation: BlockOperation {
         self.addOperations()
     }
     
+    public override var isConcurrent: Bool {
+        return false
+    }
+
     public var selectionMethod: GeneticSelectionMethod {
         return population.selectionMethod
     }
@@ -42,7 +46,7 @@ public class BasicGeneticOperation: BlockOperation {
         return population.fitnessFunction
     }
     
-    public var random: Double {
+    public var randomRate: Double {
         return drand48()
     }
     
@@ -51,6 +55,5 @@ public class BasicGeneticOperation: BlockOperation {
     }
     
     public func addOperations() {
-        
     }
 }

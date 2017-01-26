@@ -11,7 +11,7 @@ import Foundation
 public class CrossoverOperation: BasicGeneticOperation {
     public override func addOperations() {
         for (index, chromosome) in chromosomes.enumerated() where index < size {
-            if random <= mutationRate && index >= 1 {
+            if randomRate <= mutationRate && index >= 1 {
                 addExecutionBlock {
                     let (c1, c2) = chromosome.crossover(with: self.chromosomes[index-1])
                     

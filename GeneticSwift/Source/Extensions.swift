@@ -8,6 +8,16 @@
 
 import Foundation
 
+extension DispatchQueue {
+    static func safelySyncOnMain(_ closure: () -> ())  {
+        if Thread.isMainThread {
+            return closure()
+        } else {
+            return DispatchQueue.main.sync(execute: closure)
+        }
+    }
+}
+
 extension Collection {
     
     func chunk(withDistance distance: IndexDistance) -> [[SubSequence.Iterator.Element]] {

@@ -13,7 +13,7 @@ public protocol GeneticPopulation : class, CustomStringConvertible {
     var ancestor: GeneticChromosome { get }
     var best: GeneticChromosome { get }
     var generation: Int { get }
-    var phase: EvolutionPhase { get }
+    var phase: GenerationPhase { get }
     
     var chromosomes: [GeneticChromosome] { get }
 
@@ -34,6 +34,8 @@ public protocol GeneticPopulation : class, CustomStringConvertible {
     func select()
     func search()
     
+    //TODO: Remove this or search()
+    func updateBestChromosome()
     func add(chromosome: GeneticChromosome)
     func rebase(chromosomes: [GeneticChromosome])
 }
