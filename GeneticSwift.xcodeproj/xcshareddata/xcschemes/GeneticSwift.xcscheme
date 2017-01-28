@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "6C5830531E32EA2B0041AB22"
-               BuildableName = "GeneticSwift.framework"
-               BlueprintName = "GeneticSwift"
+               BuildableName = "GeneticSwiftMacOS.framework"
+               BlueprintName = "GeneticSwiftMacOS"
                ReferencedContainer = "container:GeneticSwift.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -46,8 +46,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "6C5830531E32EA2B0041AB22"
-            BuildableName = "GeneticSwift.framework"
-            BlueprintName = "GeneticSwift"
+            BuildableName = "GeneticSwiftMacOS.framework"
+            BlueprintName = "GeneticSwiftMacOS"
             ReferencedContainer = "container:GeneticSwift.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -64,8 +64,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "6C5830531E32EA2B0041AB22"
-            BuildableName = "GeneticSwift.framework"
-            BlueprintName = "GeneticSwift"
+            BuildableName = "GeneticSwiftMacOS.framework"
+            BlueprintName = "GeneticSwiftMacOS"
             ReferencedContainer = "container:GeneticSwift.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

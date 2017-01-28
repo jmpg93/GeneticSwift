@@ -20,7 +20,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     private func startRegresion() {
-        let ancestor = DoublesChromosome(values: [2, 2, 3],
+        let ancestor = DoublesChromosome(values: [2, 2, 3, 1],
                                          valuesRange: 0..<10,
                                          multiplierRange: 0..<2,
                                          additionRange: 0..<0.5)

@@ -41,7 +41,7 @@ open class DoubleRegressionFitnessFunction<T> : GeneticFitnessFunction where T :
         var result: Double = 0
         
         for (index, factor) in factors.enumerated() {
-            let n = Double(factors.count - index)
+            let n = Double(factors.count - index - 1)
             
             result += factor * pow(x, n)
         }
@@ -52,12 +52,14 @@ open class DoubleRegressionFitnessFunction<T> : GeneticFitnessFunction where T :
     open func stringPolynomialFunction(for factors: [Double]) -> String {
         var function = "P(x) = "
         for (index, factor) in factors.enumerated() {
-            let n = factors.count - index
+            let n = factors.count - index - 1
             let roundedFactor = String(format:"%.2f", factor)
-            if n != 1 {
-                function += "\(roundedFactor) * X^\(n) + "
+            if n == 0 {
+                function += "\(roundedFactor)"
+            } else if n == 1 {
+                function += "\(roundedFactor) * X + "
             } else {
-                function += "\(roundedFactor) * X"
+                function += "\(roundedFactor) * X^\(n) + "
             }
         }
         
