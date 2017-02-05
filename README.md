@@ -14,12 +14,12 @@ private func startRegresion() {
                                      multiplierRange: 0..<2,
                                      additionRange: 0..<0.5)
     
-    let regresionPoints =  [ Point(1, 1), Point(2, 5), Point(3, 7) ]
-    let regresionFunc = DoubleRegressionFitnessFunction<Point>(values: regresionPoints)
+    let regressionPoints =  [ Point(1, 1), Point(2, 5), Point(3, 7) ]
+    let regressionFunc = DoubleRegressionFitnessFunction<Point>(values: regressionPoints)
     
     let population = Population(ancestor: ancestor,
                                 size: 40,
-                                fitnessFunction: regresionFunc,
+                                fitnessFunction: regressionFunc,
                                 selectionMethod: ElitistSelectionMethod(select: 20))
     
     population.delegate = self
